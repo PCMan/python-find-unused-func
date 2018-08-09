@@ -1,4 +1,3 @@
-from __future__ import print_function
 import ast
 import sys
 from collections import defaultdict
@@ -49,14 +48,14 @@ def main():
         sources.append((py_file, used_symbols))
 
     # scan usage of each method
-    for name, method in methods.iteritems():
+    for name, method in methods.items():
         for py_file, used_symbols in sources:
             if name in used_symbols:
                 method.used_in_files.add(py_file)
 
     # print results (list by filename)
     unused_methods = defaultdict(list)
-    for name, method in methods.iteritems():
+    for name, method in methods.items():
         if not method.used_in_files:
             for py_file in method.defined_in_files:
                 unused_methods[py_file].append(name)
